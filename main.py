@@ -39,7 +39,7 @@ async def on_ready():
     date = datetime.datetime.now()
     if config['channel_id']:
         get_data.start()
-    print("[{date}] Bot activado correctamente.")
+    print(f'[{date}] Bot activado correctamente.')
     # Guarda los datos en REDIS
 
 @bot.event
