@@ -36,22 +36,25 @@ bot = commands.Bot(command_prefix='!')
 @bot.event
 async def on_ready():
     #data = requests.get(SERVER_METRICS).json()
+    date = datetime.datetime.now()
     if config['channel_id']:
         get_data.start()
-    print("Bot arriba y funcionando.")
-    print(bot.user)
+    print("[{date}] Bot activado correctamente.")
     # Guarda los datos en REDIS
 
 @bot.event
 async def on_disconnect():
     date = datetime.datetime.now()
-    print(f'Señal de desconexión recibida a las {date}')
-    print("Desconectando...")
+    print(f'[{date}] Señal de desconexión recibida. Desconectando...')
 
 @bot.event
 async def on_resumed():
     date = datetime.datetime.now()
-    print(f'Reconectado a las {date}')
+    print(f'[{date}] Reconectado.')
+
+@bot.event
+async def on_command_error(ctx, error):
+    pass
 
 # CONFIG COMMANDS
 @bot.command(name='start', pass_context=True)
