@@ -59,10 +59,9 @@ async def on_command_error(ctx, error):
 # CONFIG COMMANDS
 @bot.command(name='start', pass_context=True)
 @has_permissions(administrator=True)
-async def start_bot(ctx, channel_id):
+async def start_bot(ctx):
     guild_id = ctx.message.guild.id
     # Aquí lo ideal sería guardar esto en una base de datos persistente o escribirla en el .env del bot
-    config['channel_id'] = int(channel_id)
     try:
         get_data.start()
         await ctx.send('Inicializado correctamente. Utiliza el comando !setchannel \
@@ -74,7 +73,7 @@ más información.')
 
 @tasks.loop(minutes=5.0)
 async def get_data():
-    channel_players = bot.get_channel(config['channel_id'])
+    channel_players = bot.get_channel(int(config['channel_id']))
     server_id = config['server_id']
 
     data = requests.get(f'https://api.battlemetrics.com/servers/{server_id}').json()
