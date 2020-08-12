@@ -26,7 +26,7 @@ load_dotenv()
 config = {
     'token': os.environ['DISCORD_TOKEN'],
     'server_id': os.environ['SERVER_ID'],
-    'channel_id': ''
+    'channel_id': os.environ['CHANNEL_ID']
 }
 
 #GUILD_ID = ''
@@ -68,6 +68,7 @@ async def start_bot(ctx, channel_id):
         await ctx.send('Inicializado correctamente. Utiliza el comando !setchannel \
 <channel_id> para cambiar el canal de voz donde se mostrarán los datos del servidor.')
     except Exception as ex:
+        print(f'¡Ocurrió un error durante el arranque del bot! {ex}')
         await ctx.send('Ocurrió un error. Revisa los logs del servidor para \
 más información.')
 
