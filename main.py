@@ -24,8 +24,8 @@ logging.basicConfig(level=logging.INFO)
 load_dotenv()
 # Esta información tiene que escribirse en el .env una vez se escriba
 config = {
-    'token': os.getenv('DISCORD_TOKEN'),
-    'server_id': os.getenv('SERVER_ID'),
+    'token': os.environ['DISCORD_TOKEN'],
+    'server_id': os.environ['SERVER_ID'],
     'channel_id': ''
 }
 
