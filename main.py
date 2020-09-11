@@ -73,17 +73,20 @@ más información.')
 
 @tasks.loop(minutes=5.0)
 async def get_data():
-    channel_players = bot.get_channel(int(config['channel_id']))
-    server_id = config['server_id']
+    try:
+        channel_players = bot.get_channel(int(config['channel_id']))
+        server_id = config['server_id']
 
-    data = requests.get(f'https://api.battlemetrics.com/servers/{server_id}').json()
-    current_map = data['data']['attributes']['details']['map']
-    players = data['data']['attributes']['players']
-    await channel_players.edit(name=f'{players}/100 - {current_map}')
-    date = datetime.datetime.now()
-    bm_data = data['data']['attributes']['updatedAt']
-    print(f'Actualizado: [{date}] {current_map} {players}/100')
-    print(f'BattleMetrics: {bm_data}')
+        data = requests.get(f'https://api.battlemetrics.com/servers/{server_id}').json()
+        current_map = data['data']['attributes']['details']['map']
+        players = data['data']['attributes']['players']
+        await channel_players.edit(name=f'{players}/100 - {current_map}')
+        date = datetime.datetime.now()
+        bm_data = data['data']['attributes']['updatedAt']
+        print(f'Actualizado: [{date}] {current_map} {players}/100')
+        print(f'BattleMetrics: {bm_data}')
+    except Exception as ex:
+        print(f'¡Error! {ex}')
 
 try:
     bot.run(config['token'], reconnect=True)
