@@ -80,7 +80,7 @@ async def get_data():
         data = requests.get(f'https://api.battlemetrics.com/servers/{server_id}').json()
         current_map = data['data']['attributes']['details']['map']
         players = data['data']['attributes']['players']
-        await channel_players.edit(name=f'{players}/100 - {current_map}')
+        await channel_players.edit(name=f'📱 {players}/100 - {current_map}')
         date = datetime.datetime.now()
         bm_data = data['data']['attributes']['updatedAt']
         print(f'Actualizado: [{date}] {current_map} {players}/100')
