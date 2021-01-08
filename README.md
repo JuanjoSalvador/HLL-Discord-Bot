@@ -2,6 +2,12 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+## Why Heroku?
+
+Heroku is highly recommended by many reassons. The most important is, it is really easy to deploy the bot into your own server by simply clicking a button. Also the free tier will be enought to run the bot for long time without any problem or cost for you.
+
+I can't afford a single bot for everyone who wants to use this, because I use BattleMetrics API in order to get current players and map on your server, and this API has its own limits (requests per minute, mostly), just like Discord API limitations of renaming channel names per minute.
+
 ## Installation
 
 1. Create a bot account to get an API key that we can use later. You can follow [this instructions](https://discordpy.readthedocs.io/en/latest/discord.html) to learn how to create one.
